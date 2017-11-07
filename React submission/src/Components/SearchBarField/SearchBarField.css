@@ -1,0 +1,29 @@
+.SearchBarField {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 6.33rem;
+}
+
+.SearchBarField a {
+  display: inline-block;
+  cursor: pointer;
+  width: 8.11rem;
+  padding: .77rem 0;
+  border-radius: 54px;
+  background-color: #010c3f;
+  text-align: center;
+  font-size: .833rem;
+  transition: background-color .25s;
+}
+
+.SearchBarField a:hover {
+  background-color: rgba(108, 65, 233, .7);
+}
+
+@media only screen and (max-width: 1020px) {
+  .SearchBarField {
+    margin-bottom: 4.00rem;
+  }
+}

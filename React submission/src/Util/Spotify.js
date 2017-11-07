@@ -1,6 +1,6 @@
 const clientId = 'e4008efdab174b4392d8b77f55f9df8b';
-//const redirectURI = 'http://localhost:3000/';
-const redirectURI = `https://caseys_jammm.surge.sh/`;
+const redirectURI = `http://localhost:3000/`;
+//const redirectURI = `https://caseys-jammm.surge.sh/`;
 const accessURIBase = 'https://accounts.spotify.com/authorize';
 const spotifyURIBase = 'https://api.spotify.com/v1/';
 
@@ -25,8 +25,16 @@ const Spotify = {
     }
   },
 
-  search(term) {
-    return fetch(spotifyURIBase + `search?type=track&q=${term}`, {
+  search(terms) {
+    let searchURI = spotifyURIBase + `search?type=track&q=`;
+
+    for (var term in terms) {
+      if (terms.hasOwnProperty(term) && terms[term]) {
+        searchURI += `${term.toLowerCase()}:${terms[term].toLowerCase()}%20`;
+      }
+    }
+
+    return fetch(searchURI.slice(0, -3), {
       headers: { Authorization: `Bearer ${Spotify.getAccessToken()}` }
     }).then(response => response.json()
     ).then(jsonResponse => {

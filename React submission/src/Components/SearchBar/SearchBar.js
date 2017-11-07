@@ -1,5 +1,6 @@
 import React from 'react';
 import './SearchBar.css';
+import $ from 'jquery';
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -9,14 +10,13 @@ export default class SearchBar extends React.Component {
   }
 
   handleTermChange(e) {
-    this.props.onNameChange(e.target.value);
+    this.props.onNameChange(this.props.term, e.target.value);
   }
 
   render() {
     return (
       <div className="SearchBar">
-        <input placeholder="Enter A Song, Album, or Artist" value={this.props.term} onChange={this.handleTermChange}/>
-        <a onClick={this.props.onSearch}>SEARCH</a>
+        <input placeholder={`Enter ${this.props.text}.`} value={this.props.terms[this.props.term]} onChange={this.handleTermChange}/>
       </div>
     );
   }
